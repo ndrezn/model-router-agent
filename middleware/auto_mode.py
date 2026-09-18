@@ -12,9 +12,9 @@ Two things to know about the shape of this guard:
   disables the guard without raising, so the names below are the deepagents
   built-ins verified against `deepagents/middleware`, not guesses.
 - The classifier receives the tool call's arguments verbatim, plus the last 30
-  messages in state. The redaction in `middleware/redact.py` covers human
-  messages, not tool arguments and not tool results, so a `write_file` whose
-  content carries sensitive data sends it unredacted.
+  messages in state, tool results and assistant turns included. Nothing in this
+  project redacts any of it, so whatever the conversation holds is what reaches
+  TypeSafe.
 - The block threshold is not configurable. `_PROBABILITY_THRESHOLD` is a module
   constant of 0.5 in 0.0.1a2, so a call is blocked once TypeSafe puts its risk
   at 50% or more.
